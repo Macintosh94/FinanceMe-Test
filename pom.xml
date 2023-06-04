@@ -52,7 +52,7 @@
 	      <configuration>
 	        <archive>
 	          <manifest>
-	            <mainClass>fully.qualified.MainClass</mainClass>
+	            <mainClass>com.financeme.test.FinanceMeApplication</mainClass>
 	          </manifest>
 	        </archive>
 	        <descriptorRefs>
