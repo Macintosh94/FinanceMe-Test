@@ -19,7 +19,7 @@ public class FinanceMeApplication {
     	//System.setProperty("webdriver.chrome.driver", "D:\\Project\\Banking\\test\\test\\chromedriver.exe");
     	System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
     	ChromeOptions chromeoptions = new ChromeOptions();
-    	//chromeoptions.addArguments("--headless=new");
+    	chromeoptions.addArguments("--headless=new");
     	chromeoptions.addArguments("--remote-allow-origins=*");
     	WebDriver driver = new ChromeDriver(chromeoptions);
     	
