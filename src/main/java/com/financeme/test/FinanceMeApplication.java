@@ -28,7 +28,7 @@ public class FinanceMeApplication {
     	System.out.println("Selenium test script has started...");
     	
     	//driver.get("http://10.0.128.6:8081/contact.html");
-    	driver.get("http://localhost:8081/contact.html");
+    	driver.get("http://10.0.128.6:8081/contact.html");
     	Thread.sleep(2000);
     	driver.findElement(By.name("Name")).sendKeys("Palash");
     	driver.findElement(By.name("Phone Number")).sendKeys("82732819");
