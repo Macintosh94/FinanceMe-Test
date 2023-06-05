@@ -15,6 +15,9 @@
     command : sudo systemctl start docker
     become : yes
     become_user : root
+    
+ - name : Delete Container
+   command : docker rm -f finance-me
 
   - name: Deploy Docker Container
     command: docker run -itd -p 8081:8080 --name finance-me macintosh2023/finance-me:1.0
