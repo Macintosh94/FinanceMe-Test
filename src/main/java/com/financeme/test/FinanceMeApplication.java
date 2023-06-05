@@ -50,7 +50,7 @@ public class FinanceMeApplication {
     	File srcFile = scrShot.getScreenshotAs(OutputType.FILE);
     	
     	//File destFile = new File ("D:\\Project\\Banking\\test\\test\\artifact.png");
-    	File destFile = new File ("/home/ubuntu/test-artifact/artifact.png");
+    	File destFile = new File ("/etc/ansible/artifact.png");
     	FileUtils.copyFile(srcFile, destFile);
     	
     	driver.quit();
