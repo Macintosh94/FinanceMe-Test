@@ -1,0 +1,45 @@
+node {
+    
+    stage ('code checkout'){
+        git 'https://github.com/Macintosh94/FinanceMe-Test.git'
+    }
+    
+    stage ('build code'){
+        sh 'mvn clean compile assembly:single'
+    }
+    
+    stage ('run test package'){
+        sh 'java -jar target/test-0.0.1-SNAPSHOT-jar-with-dependencies.jar'
+    }
+
+    stage ('public rep'){
+        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, includes: 'artifact.png', keepAll: false, reportDir: '/var/lib/jenkins/workspace/Testing_pipeline', reportFiles: 'index1.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+    }
+    
+    stage ('Code checkout') {
+      echo "Checking for Terraform Configuration"
+      git'https://github.com/Macintosh94/FinanceMe-Test.git'
+       }
+      
+      stage ('Terraform Init'){
+      sh 'terraform init'
+      }
+
+      stage ('Terraform Apply') {
+      sh 'terraform apply --auto-approve'
+      } 
+      
+      stage ("wait_prior_testing") {
+      echo 'Waiting 5 minutes for deployment to complete prior starting smoke testing'
+      sleep 60 // seconds
+}
+      
+    //  stage ('Terraform Destroy') {
+     // sh 'terraform destroy --auto-approve'
+     // }
+      
+      stage ('Install Docker and running the container') {
+      echo 'Installing docker and running the container/s'
+      ansiblePlaybook become: true, credentialsId: 'ansible_cred', disableHostKeyChecking: true, installation: 'Ansible', inventory: '/etc/ansible/hosts', playbook: '/usr/bin/test-server-deployment.yml'
+      }
+}
