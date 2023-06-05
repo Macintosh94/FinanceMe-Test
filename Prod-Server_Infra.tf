@@ -28,7 +28,7 @@ resource "aws_network_interface" "prod-ni" {
 
 resource "aws_eip" "prod-eip" {
   vpc  = true
-  network_interface = aws_network_interface.test-ni1.id
+  network_interface = aws_network_interface.prod-ni.id
   associate_with_private_ip = "10.0.128.7"
 
 }
